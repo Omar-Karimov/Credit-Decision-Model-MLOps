@@ -17,9 +17,9 @@ TARGET = "loan_status"
 # Final features used in the model
 FEATURES = ["rate", "amount", "purpose", "period", "cus_age", "gender",
        "education_level", "marital_status", "has_children", "living_situation",
-       "total_experience", "annual_income", "job_sector", "DTI", "APR",
+       "total_experience", "job_sector", "DTI", "APR",
        "ccr_tot_mounth_amt", "ccr_payed_loan_tot_amt",
-       "ccr_act_loan_tot_rest_amt", "income_to_loan_ratio"]
+       "ccr_act_loan_tot_rest_amt", "income"]
 
 
 NUM_FEATURES = ["rate", "amount", "period", "cus_age", "total_experience",
@@ -42,7 +42,7 @@ ANNUAL_MULTIPLIER = 12
 AMOUNT_COLUMN = "amount"
 NEW_ANNUAL_INCOME_COLUMN = "annual_income"
 NEW_INCOME_TO_LOAN_RATIO_COLUMN = "income_to_loan_ratio"
-COLUMNS_TO_DROP = ["income", "customer_id"]
+COLUMNS_TO_DROP = ["income"]
 
 
 # Log transformation configuration
