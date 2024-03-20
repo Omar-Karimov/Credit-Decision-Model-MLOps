@@ -42,7 +42,7 @@ ANNUAL_MULTIPLIER = 12
 AMOUNT_COLUMN = "amount"
 NEW_ANNUAL_INCOME_COLUMN = "annual_income"
 NEW_INCOME_TO_LOAN_RATIO_COLUMN = "income_to_loan_ratio"
-COLUMNS_TO_DROP = ["income"]
+COLUMNS_TO_DROP = ["income", "customer_id"]
 
 
 # Log transformation configuration
