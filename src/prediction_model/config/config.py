@@ -24,7 +24,7 @@ FEATURES = ["rate", "amount", "purpose", "period", "cus_age", "gender",
 
 NUM_FEATURES = ["rate", "amount", "period", "cus_age", "total_experience",
  "ccr_act_loan_tot_rest_amt", "DTI", "APR", "ccr_tot_mounth_amt",
- "ccr_payed_loan_tot_amt", "annual_income","income_to_loan_ratio"]
+ "ccr_payed_loan_tot_amt", "income"]
 
 
 CAT_FEATURES = ["purpose", "gender", "education_level", "marital_status",
@@ -47,4 +47,6 @@ COLUMNS_TO_DROP = ["income"]
 
 # Log transformation configuration
 LOG_TRANSFORM_CONSTANT = 1e-6
-NUMERICAL_COLUMNS = NUM_FEATURES
+NUMERICAL_COLUMNS = ["rate", "amount", "period", "cus_age", "total_experience",
+ "ccr_act_loan_tot_rest_amt", "DTI", "APR", "ccr_tot_mounth_amt",
+ "ccr_payed_loan_tot_amt", "annual_income","income_to_loan_ratio"]

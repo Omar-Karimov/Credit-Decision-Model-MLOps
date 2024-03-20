@@ -12,7 +12,7 @@ model_pipeline = Pipeline(
         ("custom_processing", pp.CustomProcessing()),  
         ("drop_features", pp.ColumnDropper(variables_to_drop=config.COLUMNS_TO_DROP)),
         ("label_encoder", pp.CategoricalEncoder(variables=config.FEATURES_TO_ENCODE)),
-        ("log_scaling", pp.LogScaler(variables=config.NUM_FEATURES, add_constant=True)),
+        ("log_scaling", pp.LogScaler(variables=config.NUMERICAL_COLUMNS, add_constant=True)),
         ("standard_scale", StandardScaler()), 
         ("logistic_classifier", LogisticRegression(random_state=0))  
     ]
