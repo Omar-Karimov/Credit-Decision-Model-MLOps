@@ -196,26 +196,26 @@ from prediction_model.predict import generate_predictions
 
 # Example of custom data
 custom_data = {
-    "customer_id": [1001],  
-    "rate": [22],  
-    "amount": [25000],  
-    "purpose": ["Personal"],  
-    "period": [48],  
-    "cus_age": [45],  
-    "gender": ["Male"], 
-    "education_level": ["Educated"],  
-    "marital_status": ["Married"],  
-    "has_children": ["Yes"],  
-    "living_situation": ["Independent"], 
-    "total_experience": [120], 
-    "income": [7500],  
-    "job_sector": ["Private"],  
-    "DTI": [32.5],  
-    "APR": [33.3],  
-    "ccr_tot_mounth_amt": [1500],  
-    "ccr_payed_loan_tot_amt": [20000], 
-    "ccr_act_loan_tot_rest_amt": [10000], 
+  "rate": 22.0,
+  "amount": 25000.0,
+  "purpose": "Personal",
+  "period": 48,
+  "cus_age": 45,
+  "gender": "Male",
+  "education_level": "Educated",
+  "marital_status": "Married",
+  "has_children": "Yes",
+  "living_situation": "Independent",
+  "total_experience": 120,
+  "income": 7500.0,
+  "job_sector": "Private",
+  "DTI": 32.5,
+  "APR": 33.3,
+  "ccr_tot_mounth_amt": 1500.0,
+  "ccr_payed_loan_tot_amt": 20000.0,
+  "ccr_act_loan_tot_rest_amt": 10000.0
 }
+
 
 # Generate a prediction for the custom data
 custom_prediction = generate_predictions(custom_data)
