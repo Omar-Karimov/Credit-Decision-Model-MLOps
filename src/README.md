@@ -110,51 +110,43 @@ python setup.py sdist bdist_wheel
 
 ## Directory Structure
 
-Below is the file structure of the source code:
+Below is the structure for the `src/` directory, which contains the main components of the Credit Decision Model package:
 
 ```bash
 Credit-Decision-Model-MLOps/
-├── src/
-│   ├── prediction_model/
-│   │   ├── config/
-│   │   │   ├── __init__.py
-│   │   │   └── config.py
-│   │   ├── datasets/
-│   │   │   ├── __init__.py
-│   │   │   ├── test.csv
-│   │   │   └── train.csv
-│   │   ├── processing/
-│   │   │   ├── __init__.py
-│   │   │   ├── data_handling.py
-│   │   │   └── preprocessing.py
-│   │   ├── trained_models/
-│   │   │   ├── __init__.py
-│   │   │   └── classification.pkl
-│   │   ├── __init__.py
-│   │   ├── pipeline.py
-│   │   ├── predict.py
-│   │   ├── training_pipeline.py
-│   │   └── VERSION
-│   ├── tests/
-│   │   ├── __init__.py
-│   │   ├── pytest.ini
-│   │   └── test_prediction.py
-│   ├── MANIFEST.in
-│   ├── README.md
-│   ├── requirements.txt
-│   └── setup.py
-├── Notebooks/
-│   ├── EDA_Loan.ipynb
-│   ├── Loan_Experiment.ipynb
-│   ├── log_trained_model_v1.pkl
-│   ├── test.csv
-│   └── train.csv
-└── .gitignore
+└── src/
+    ├── prediction_model/
+    │   ├── config/
+    │   │   ├── __init__.py
+    │   │   └── config.py
+    │   ├── datasets/
+    │   │   ├── __init__.py
+    │   │   ├── test.csv
+    │   │   └── train.csv
+    │   ├── processing/
+    │   │   ├── __init__.py
+    │   │   ├── data_handling.py
+    │   │   └── preprocessing.py
+    │   ├── trained_models/
+    │   │   ├── __init__.py
+    │   │   └── classification.pkl
+    │   ├── __init__.py
+    │   ├── pipeline.py
+    │   ├── predict.py
+    │   ├── training_pipeline.py
+    │   └── VERSION
+    ├── tests/
+    │   ├── pytest.ini
+    │   └── test_prediction.py
+    ├── MANIFEST.in
+    ├── README.md
+    ├── requirements.txt
+    └── setup.py
 ```
 
-## Notebooks
+## Additional Resources
 
-The `Notebooks` folder at the root of this repository contains Jupyter notebooks essential for demonstrating the data analysis and the machine learning pipeline used in the Credit Decision Model project. These notebooks serve as a practical guide to understanding the preprocessing, training, and prediction stages within a machine learning workflow, tailored to a logistic regression model for loan approval prediction.
+For further insights into the data analysis, model development process, and exploratory findings, please refer to the Jupyter notebooks located in the `Notebooks/` directory at the root of this project. These notebooks serve as a practical guide to understanding the preprocessing, training, and prediction stages within a machine learning workflow, tailored to a logistic regression model for loan approval prediction.
 
 Included Notebooks:
 - `EDA_Loan.ipynb`: This notebook presents an exploratory data analysis (EDA) on the loan dataset, providing visual and statistical insights into the features that influence loan approval decisions.
