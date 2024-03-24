@@ -70,3 +70,36 @@ docker exec -d -w /code credit_model_container python main.py
 This will start the FastAPI application, making it accessible at http://localhost:8005/docs on your local machine.
 
 Replace <username> with your Docker Hub username in the commands above. This setup allows for easy deployment and testing of the Credit Decision Model application within a Dockerized environment.
+
+
+## Testing the FastAPI Application
+
+Once the application is running, you can send POST requests to the `/prediction_api` endpoint with the appropriate JSON payload. Below is an example using Postman to send a request and receive a prediction response:
+
+![FastAPI Test with Postman](docs/postman.png)
+
+The example JSON payload for the request is:
+
+```json
+{
+  "rate": 22.0,
+  "amount": 25000.0,
+  "purpose": "Personal",
+  "period": 48,
+  "cus_age": 45,
+  "gender": "Male",
+  "education_level": "Educated",
+  "marital_status": "Married",
+  "has_children": "Yes",
+  "living_situation": "Independent",
+  "total_experience": 120,
+  "income": 7500.0,
+  "job_sector": "Private",
+  "DTI": 32.5,
+  "APR": 33.3,
+  "ccr_tot_mounth_amt": 1500.0,
+  "ccr_payed_loan_tot_amt": 20000.0,
+  "ccr_act_loan_tot_rest_amt": 10000.0
+}
+
+```
