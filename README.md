@@ -72,6 +72,7 @@ This will start the FastAPI application, making it accessible at http://localhos
 Replace <username> with your Docker Hub username in the commands above. This setup allows for easy deployment and testing of the Credit Decision Model application within a Dockerized environment.
 
 
+
 ## Testing the FastAPI Application
 
 Once the application is running, you can send POST requests to the `/prediction_api` endpoint with the appropriate JSON payload. Below is an example using Postman to send a request and receive a prediction response:
@@ -79,6 +80,7 @@ Once the application is running, you can send POST requests to the `/prediction_
 ![FastAPI Test with Postman](docs/postman.png)
 
 The example JSON payload for the request is:
+
 
 ```json
 {
