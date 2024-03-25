@@ -104,3 +104,42 @@ The example JSON payload for the request is:
 }
 
 ```
+
+## AWS EC2 Instance Setup for MLOps
+
+
+![EC2 Instance Summary](docs/EC2_instance.png)
+
+To ensure that our MLOps pipeline is robust and scalable, we leverage AWS EC2 instances. This section guides you through the setup of an EC2 instance which will serve as the host for our Docker and Jenkins installations.
+
+### Prerequisites
+
+- An active AWS account
+- Access permissions to manage EC2 instances within your AWS account
+
+### Launching an EC2 Instance
+
+1. **AMI Selection**: We start by selecting an Ubuntu Server image; for this project, we used "Ubuntu 22.04 LTS" for its stability and long-term support.
+
+2. **Instance Type**: Choose a `t2.medium` instance type. This instance provides an optimal balance between compute, memory, and networking resources, and is suitable for medium-level workloads.
+
+3. **Instance Configuration**: By default, we launch a single instance. Adjust the network settings or roles as required by your project's needs.
+
+4. **Storage Setup**: Attach a minimum of 30 GiB storage to ensure sufficient space for all our Docker images, Jenkins configurations, and other essential data.
+
+5. **Security Group Settings**: We establish a new security group with rules that allow SSH access. Ensure to also allow traffic on port 8080 for Jenkins, and any other ports your services may need.
+
+6. **Review & Launch**: Confirm that all configurations are correct, and proceed to launch your instance.
+
+### Accessing Your Instance
+
+Post-launch, you'll be prompted to choose an existing key pair or create a new one. This key pair is critical for SSH access into your EC2 instance securely.
+
+Here's a sample command to SSH into your instance:
+
+```bash
+ssh -i /path/to/your-key.pem ubuntu@<Your-EC2-Instance-Public-DNS>
+
+```
+
+
