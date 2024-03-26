@@ -2,7 +2,7 @@
 
 Our project implements a continuous integration and continuous deployment (CI/CD) pipeline that streamlines the development, testing, and deployment of our machine learning (ML) application. Below, we provide an overview of the pipeline stages and the Jenkins freestyle projects that manage each stage.
 
-![CI/CD Pipeline Overview](docs/CI + CT + CD PIPLENINE.jpg)
+![CI/CD Pipeline Overview](docs/pipeline.jpg)
 
 ## Pipeline Stages
 
@@ -39,7 +39,7 @@ Our project implements a continuous integration and continuous deployment (CI/CD
 
 Developers receive feedback through email notifications at each stage of the pipeline, ensuring that any issues can be quickly addressed. This feedback loop enables rapid iteration and a high degree of confidence in the quality and reliability of the application.
 
-![Jenkins Dashboard](docs/Jenkins_freestyle_projects.png)
+![Jenkins Dashboard](docs/freestyle.png)
 
 ## Accessing the ML Model API
 
