@@ -1,3 +1,55 @@
+# CI/CD Pipeline Overview
+
+Our project implements a continuous integration and continuous deployment (CI/CD) pipeline that streamlines the development, testing, and deployment of our machine learning (ML) application. Below, we provide an overview of the pipeline stages and the Jenkins freestyle projects that manage each stage.
+
+![CI/CD Pipeline Overview](docs/CI-CT-CD-PIPELINE.jpg)
+
+## Pipeline Stages
+
+### 1. Code Integration and Dockerization (`1-Github-Docker`)
+
+**Project:** `1-Github-Docker`
+
+- **Trigger:** GitHub webhook on `push` event.
+- **Action:** Performs Docker activities, such as building or updating the Docker image based on the latest code pushed to the GitHub repository.
+- **Notification:** Sends an email with the Docker activity log to developers.
+
+### 2. Model Training (`2-Training-Project`)
+
+**Project:** `2-Training-Project`
+
+- **Action:** Runs the docker container of the newly built image and performs model training within the container.
+- **Notification:** Sends an email with the training logs, providing insights into the training process and outcomes.
+
+### 3. Model Testing (`3-ML-Testing`)
+
+**Project:** `3-ML-Testing`
+
+- **Action:** Initiates the testing of the ML model. Test results are saved into an XML file, which is then copied from the Docker container to the host system for reporting purposes.
+- **Notification:** Emails the test report to developers, detailing the performance of the ML model.
+
+### 4. Deployment (`4-Deploy-to-Server`)
+
+**Project:** `4-Deploy-to-Server`
+
+- **Action:** Deploys the FastAPI application, which serves the ML model API. The deployment is completed, and the app becomes available on port 8005.
+- **Notification:** Notifies developers of the deployment status and the availability of the app.
+
+## Continuous Feedback Loop
+
+Developers receive feedback through email notifications at each stage of the pipeline, ensuring that any issues can be quickly addressed. This feedback loop enables rapid iteration and a high degree of confidence in the quality and reliability of the application.
+
+![Jenkins Dashboard](docs/Jenkins-freestyle-projects.png)
+
+## Accessing the ML Model API
+
+Once deployed, users can interact with the ML model API via the FastAPI interface, which is designed to handle incoming requests and provide model inference with high performance.
+
+The above images are snapshots of the pipeline's various components, which illustrate the robust and automated workflow we have established.
+
+
+# Installation Process
+
 ## Docker Commands
 
 This section outlines the steps to containerize and deploy the Credit Decision Model application using Docker.
@@ -141,5 +193,134 @@ Here's a sample command to SSH into your instance:
 ssh -i /path/to/your-key.pem ubuntu@<Your-EC2-Instance-Public-DNS>
 
 ```
+
+
+## Installing Jenkins on EC2 Ubuntu Instance
+
+This guide assumes that you are using an Ubuntu Server for your EC2 instance. Follow the steps below to install Jenkins.
+
+### Adding Jenkins to the Package Repository
+
+First, add the Jenkins repository key to your system with the following command:
+
+```bash
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+```
+
+Next, add the Jenkins repository to the package sources list:
+
+```bash
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+
+Update your package index and install Jenkins:
+
+```bash
+sudo apt-get update
+sudo apt-get install jenkins
+```
+
+Jenkins requires Java in order to run. Install OpenJDK 17:
+
+```bash
+sudo apt update
+sudo apt install fontconfig openjdk-17-jre
+```
+
+Verify the Java installation:
+
+```bash
+java -version
+```
+
+You should see output similar to:
+
+```bash
+openjdk version "17.0.8" 2023-07-18
+OpenJDK Runtime Environment (build 17.0.8+7-Debian-1deb12u1)
+OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
+```
+
+To start Jenkins and enable it to run on system boot:
+
+```bash
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+```
+
+If Jenkins has started successfully, you should see a status indicating it is active.
+
+By default, Jenkins runs on port 8080. Access Jenkins by entering http://<Your-EC2-Instance-Public-DNS>:8080 in a web browser. 
+
+To get password:
+
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+![Unlock Jenkins](docs/jenkins.png)
+
+
+## Install Docker Engine on Ubuntu
+
+### Set up Docker's apt repository.
+
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+
+### To install the latest version, run:
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+### Verify that the Docker Engine installation is successful by running the hello-world image.
+```bash
+sudo docker run hello-world
+```
+
+
+### To manage Docker as a non-root user and to allow Jenkins to run Docker commands, you need to add users to the Docker group:
+
+```bash
+sudo usermod -a -G docker jenkins
+sudo usermod -a -G docker $USER
+```
+
+## Setting Up GitHub Webhooks for Jenkins
+
+To integrate Jenkins with your GitHub repository, you'll need to set up a webhook that triggers a Jenkins build whenever changes are pushed to the repository.
+
+1. Navigate to your repository on GitHub.
+2. Go to Settings > Webhooks.
+3. Click on Add webhook.
+4. In the Payload URL field, enter the following URL, replacing <public-ipv4-address> with your EC2 instance's public IPv4 address:
+
+
+```bash
+http://<public-ipv4-address>:8080/github-webhook/
+```
+5. Select application/json for the Content type.
+6. Choose which events you would like to trigger the webhook.
+7. Click on Add webhook to save the settings.
+
+Now, Jenkins will receive a notification from GitHub and start a build whenever the specified events occur in your repository.
+
+
 
 
