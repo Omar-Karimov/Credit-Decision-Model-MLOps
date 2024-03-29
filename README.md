@@ -37,6 +37,8 @@ Our project implements a continuous integration and continuous deployment (CI/CD
 
 ## Continuous Feedback Loop
 
+![Jenkins Notification Example](docs/notification.png)
+
 Developers receive feedback through email notifications at each stage of the pipeline, ensuring that any issues can be quickly addressed. This feedback loop enables rapid iteration and a high degree of confidence in the quality and reliability of the application.
 
 ![Jenkins Dashboard](docs/freestyle.png)
