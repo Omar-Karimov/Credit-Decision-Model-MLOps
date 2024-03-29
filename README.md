@@ -45,6 +45,8 @@ Developers receive feedback through email notifications at each stage of the pip
 
 ## Accessing the ML Model API
 
+![FastAPI DOCS](docs/api.png)
+
 Once deployed, users can interact with the ML model API via the FastAPI interface, which is designed to handle incoming requests and provide model inference with high performance.
 
 The above images are snapshots of the pipeline's various components, which illustrate the robust and automated workflow we have established.
