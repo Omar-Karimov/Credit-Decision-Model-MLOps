@@ -146,11 +146,11 @@ Credit-Decision-Model-MLOps/
 
 ## Additional Resources
 
-For further insights into the data analysis, model development process, and exploratory findings, please refer to the Jupyter notebooks located in the `Notebooks/` directory at the root of this project. These notebooks serve as a practical guide to understanding the preprocessing, training, and prediction stages within a machine learning workflow, tailored to a logistic regression model for loan approval prediction.
+For insights into the initial stages of data analysis and model development, please explore the Jupyter notebooks located in the Notebooks/ directory at the root of this project. While the comprehensive training pipeline, featuring a variety of machine learning models and grid search for hyperparameter tuning, is implemented in the training_pipeline.py script, the notebooks offer foundational knowledge and a focused look at using logistic regression for loan approval prediction.
 
 Included Notebooks:
 - `EDA_Loan.ipynb`: This notebook presents an exploratory data analysis (EDA) on the loan dataset, providing visual and statistical insights into the features that influence loan approval decisions.
-- `Loan_Experiment.ipynb`: Although the project focuses on implementing a logistic regression model, this notebook illustrates the steps taken to preprocess the data, train the model, and evaluate its performance. The emphasis is on demonstrating the application of machine learning operations (MLOps) practices rather than comparing multiple models.
+- `Loan_Experiment.ipynb`: The emphasis is on demonstrating the application of machine learning operations (MLOps) practices rather than comparing multiple models. For a more comprehensive exploration of model selection and optimization, the training_pipeline.py script extends beyond logistic regression.
 
 Additionally, the Notebooks folder includes:
 - `log_trained_model_v1.pkl` - A pickle file of the trained logistic regression model ready for making predictions.
