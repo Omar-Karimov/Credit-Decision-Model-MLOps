@@ -1,6 +1,6 @@
 # CI/CD Pipeline Overview
 
-Our project implements a continuous integration and continuous deployment (CI/CD) pipeline that streamlines the development, testing, and deployment of our machine learning (ML) application. Below, we provide an overview of the pipeline stages and the Jenkins freestyle projects that manage each stage.
+This project implements a continuous integration and continuous deployment (CI/CD) pipeline that streamlines the development, testing, and deployment of machine learning (ML) application. Below, provided an overview of the pipeline stages and the Jenkins freestyle projects that manage each stage.
 
 ![CI/CD Pipeline Overview](docs/pipeline.jpg)
 
@@ -95,7 +95,7 @@ Execute the training pipeline script within the container:
 docker exec credit_model_container python prediction_model/training_pipeline.py
 ```
 
-Run pytest inside the container, generating a report named PytestResults.xml:
+Run Pytest inside the container, generating a report named PytestResults.xml:
 
 ```bash
 docker exec credit_model_container pytest -v --junitxml PytestResults.xml --cache-clear
